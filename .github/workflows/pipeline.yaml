@@ -60,12 +60,14 @@ jobs:
   #   - name: Run linting
   #     run: pylint calculator.py
 
-  sonarcloud:
+
+  sonarqube:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -76,7 +78,7 @@ jobs:
         python3 -m pip install --upgrade pip
         pip3 install -r requirements.txt
 
-    - name: SonarCloud Scan
+    - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@v1
       with:
         organization: "devops-assignment"
